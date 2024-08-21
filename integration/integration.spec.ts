@@ -30,7 +30,7 @@ describe("Edge-agent end-to-end", () => {
         let started = Date.now()
         const promise = new Promise<void>((resolve, reject) => {
             const check = setInterval(() => {
-                if (SDK.newMessages.length == 3) {
+                if (SDK.messages.length == 3) {
                     clearInterval(check)
                     SDK.stop()
                     resolve()
@@ -52,7 +52,7 @@ describe("Edge-agent end-to-end", () => {
         }, 2000)
         
         setTimeout(async () => {
-            // await axios.post(`${issuerMessageToSdkUrl}/send`, { "content": "hello world" })
+            await axios.post(`${issuerMessageToSdkUrl}/send`, { "content": "hello world" })
         }, 3000)
 
         await promise

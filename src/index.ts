@@ -3,7 +3,6 @@ import axios from 'axios'
 class Sdk {
     connections: Map<string, { url: string }> = new Map()
     messages: any[] = []
-    newMessages: any[] = []
 
     mediator: { url: string, id: string } | undefined = undefined
 
@@ -11,7 +10,7 @@ class Sdk {
         if (this.mediator) {
             const response = await axios.get(this.mediator.url)
             const newMessages = response.data as any[]
-            this.newMessages.push(...newMessages)
+            this.messages.push(...newMessages)
         }
     }, 1 * 1000)
 
