@@ -45,7 +45,9 @@ jobs:
         env:
           AGENT_URL: ${{ vars.SIT_AGENT_URL }}
           MEDIATOR_URL: ${{ vars.SIT_MEDIATOR_URL }}
-        run: npm run integration
+        run: |
+          npm run ci
+          npm run e2e
 
       - name: Release library
         run: npx semantic-release
