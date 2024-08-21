@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "integration": "npm --prefix .. run build && npm e2e",
     "e2e": "npx tsx e2e.ts"
   },
   "author": "",

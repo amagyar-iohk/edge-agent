@@ -18,6 +18,11 @@ jobs:
         with:
           node-version: 21
 
+      - name: Build sdk
+        run: |
+          npm ci
+          npm run build
+
       - name: Run integration tests
         working-directory: integration
         env:
