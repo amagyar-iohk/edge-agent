@@ -1,6 +1,7 @@
 {
   "name": "edge-agent-integration",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "start": "npm --prefix .. run build && npm test",
     "test": "npx tsx e2e.ts"

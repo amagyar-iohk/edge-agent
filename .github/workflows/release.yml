@@ -36,6 +36,7 @@ jobs:
 
       - name: E2E Tests
         if: ${{ steps.breaking.outputs.result != 'major' }}
+        working-directory: integration
         env:
           AGENT_URL: ${{ vars.SIT_AGENT_URL }}
           MEDIATOR_URL: ${{ vars.SIT_MEDIATOR_URL }}

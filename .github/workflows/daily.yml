@@ -18,6 +18,7 @@ jobs:
           node-version: 21
 
       - name: Run integration tests
+        working-directory: integration
         env:
           MEDIATOR_URL: ${{ vars.DEV_MEDIATOR_URL }}
           AGENT_URL: ${{ vars.DEV_AGENT_URL }}
