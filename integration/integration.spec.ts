@@ -3,7 +3,6 @@ import dotenv from "dotenv"
 import { SDK } from "@amagyar-iohk/edge-agent"
 import assert from "assert";
 
-
 describe("Edge-agent end-to-end", () => {
     dotenv.config({ path: ".env" })
     const mediatorUrl = process.env.MEDIATOR_URL || "http://localhost:3333"
@@ -28,13 +27,18 @@ describe("Edge-agent end-to-end", () => {
     test("SDK should get messages from mediator", async () => {
         let issuerMessageToSdkUrl = SDK.connections.get("issuer").url
 
+        let started = Date.now()
         const promise = new Promise<void>((resolve, reject) => {
             const check = setInterval(() => {
                 if (SDK.newMessages.length == 3) {
-                    console.log("Received 3 new messages!")
                     clearInterval(check)
                     SDK.stop()
                     resolve()
+                }
+                if (Date.now() - started > 10000) {
+                    clearInterval(check)
+                    SDK.stop()
+                    reject("Unable to retrieve the 3 expected messages")
                 }
             }, 500)
         })
@@ -48,10 +52,11 @@ describe("Edge-agent end-to-end", () => {
         }, 2000)
         
         setTimeout(async () => {
-            await axios.post(`${issuerMessageToSdkUrl}/send`, { "content": "hello world" })
+            // await axios.post(`${issuerMessageToSdkUrl}/send`, { "content": "hello world" })
         }, 3000)
 
         await promise
+        assert.equal(SDK.messages.length, 3)
     }, 30 * 1000)
 })
 
