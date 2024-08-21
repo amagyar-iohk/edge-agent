@@ -1,12 +1,35 @@
 import axios from "axios";
 import dotenv from "dotenv"
 import { SDK } from "@amagyar-iohk/edge-agent"
-import assert from "assert";
+import assert from "assert"
 
 describe("Edge-agent end-to-end", () => {
     dotenv.config({ path: ".env" })
     const mediatorUrl = process.env.MEDIATOR_URL || "http://localhost:3333"
     const agentUrl = process.env.AGENT_URL || "http://localhost:3000"
+
+    // simple tricky to get the heroku working
+    beforeAll(async () => {
+        const agent = new Promise<void>((resolve, reject) => {
+            const t = setInterval(async () => {
+                const r = await fetch(`${agentUrl}/health`)
+                if (r.status == 200) {
+                    clearInterval(t)
+                    resolve()
+                }
+            }, 3 * 1000)
+        })
+        const mediator = new Promise<void>((resolve, reject) => {
+            const t = setInterval(async () => {
+                const r = await fetch(`${mediatorUrl}/health`)
+                if (r.status == 200) {
+                    clearInterval(t)
+                    resolve()
+                }
+            }, 3 * 1000)
+        })
+        await Promise.all([agent, mediator])
+    })
 
     test("Setup mediator", async () => {
         await SDK.setupMediator(`${mediatorUrl}/connections`)

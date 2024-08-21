@@ -9,6 +9,7 @@
   "license": "ISC",
   "dependencies": {
     "@amagyar-iohk/edge-agent": "file:..",
+    "allure-js-commons": "^3.0.0-beta.10",
     "axios": "^1.7.4"
   },
   "devDependencies": {
