@@ -9,6 +9,7 @@
   "license": "ISC",
   "dependencies": {
     "@amagyar-iohk/edge-agent": "file:..",
+    "dotenv": "^16.4.5",
     "tsc": "^2.0.4",
     "tsx": "^4.17.0",
     "typescript": "^5.5.4"
