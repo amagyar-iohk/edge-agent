@@ -1,8 +1,8 @@
 import axios from "axios";
-import { SDK } from "../index";
 import dotenv from "dotenv"
+import { SDK } from "@amagyar-iohk/edge-agent"
 
-dotenv.config({ path: "integration/.env" })
+dotenv.config({ path: ".env" })
 
 async function run() {
     const mediatorUrl = process.env.MEDIATOR_URL || "http://localhost:3333"

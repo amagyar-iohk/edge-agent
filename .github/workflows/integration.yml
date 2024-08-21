@@ -25,3 +25,11 @@ jobs:
         run: |
           npm ci
           npm run integration
+
+      - name: Dispatch publication
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PAT }}
+          repository: amagyar-iohk/integration
+          event-type: edge-agent
+          client-payload: '{"component": "edge-agent", "env": "sit"}'

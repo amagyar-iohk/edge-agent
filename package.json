@@ -8,8 +8,7 @@
     "./dist"
   ],
   "scripts": {
-    "build": "npx tsc",
-    "integration": "npx tsx integration/e2e.ts"
+    "build": "npx tsc"
   },
   "author": "Allain Magyar",
   "repository": {

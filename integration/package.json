@@ -1,0 +1,16 @@
+{
+  "name": "edge-agent-integration",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npm --prefix .. run build && npm test",
+    "test": "npx tsx e2e.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@amagyar-iohk/edge-agent": "file:..",
+    "tsc": "^2.0.4",
+    "tsx": "^4.17.0",
+    "typescript": "^5.5.4"
+  }
+}
