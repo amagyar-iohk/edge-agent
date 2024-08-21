@@ -1,12 +1,12 @@
-name: Integration
+name: Daily test
 
 on:
   schedule:
     - cron: 0/5 * * * *
 
 jobs:
-  integration:
-    name: "Integration tests"
+  dev-test:
+    name: "Daily tests"
     runs-on: ubuntu-latest
 
     steps:
