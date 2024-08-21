@@ -22,4 +22,6 @@ jobs:
         env:
           MEDIATOR_URL: ${{ vars.SIT_MEDIATOR_URL }}
           AGENT_URL: ${{ vars.SIT_AGENT_URL }}
-        run: npm run integration
+        run: |
+          npm ci
+          npm run integration

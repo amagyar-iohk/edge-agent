@@ -22,4 +22,6 @@ jobs:
           node-version: 21
 
       - name: Run unit tests
-        run: npx jest
+        run: |
+          npm ci
+          npx jest
