@@ -12,7 +12,7 @@ module.exports = {
     }],
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
-    ["@semantic-release/npm", {
+    ["@semantic-release/exec", {
       verifyReleaseCmd: "echo ${nextRelease.version} > .version"
     }],
     ["@semantic-release/exec", {
