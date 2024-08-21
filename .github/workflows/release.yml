@@ -46,7 +46,7 @@ jobs:
           AGENT_URL: ${{ vars.SIT_AGENT_URL }}
           MEDIATOR_URL: ${{ vars.SIT_MEDIATOR_URL }}
         run: |
-          npm run ci
+          npm ci
           npm run e2e
 
       - name: Release library
