@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "e2e": "npx tsx e2e.ts"
+    "e2e": "npx jest"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@amagyar-iohk/edge-agent": "file:..",
+    "allure-jest": "^3.0.0-beta.10",
     "dotenv": "^16.4.5",
+    "jest": "^29.7.0",
     "tsc": "^2.0.4",
     "tsx": "^4.17.0",
     "typescript": "^5.5.4"

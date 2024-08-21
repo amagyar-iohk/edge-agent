@@ -1,4 +1,3 @@
 {
-    "preset": "ts-jest",
-    "testEnvironment": "allure-jest/node"
+    "preset": "ts-jest"
 }

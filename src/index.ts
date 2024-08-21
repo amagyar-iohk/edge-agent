@@ -5,7 +5,7 @@ class Sdk {
     messages: any[] = []
     newMessages: any[] = []
 
-    private mediator: { url: string, id: string } | undefined = undefined
+    mediator: { url: string, id: string } | undefined = undefined
 
     private readMessages = setInterval(async () => {
         if (this.mediator) {
