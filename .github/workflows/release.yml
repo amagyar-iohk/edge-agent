@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: "Release edge-agent"
+    runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 21
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Tests
+        run: npx jest
+
+      - name: Detect breaking change
+        id: breaking
+        run: |
+          npx semantic-release --dry-run --no-ci
+          echo "result=$(cat .type)" >> $GITHUB_OUTPUT
+
+      - name: E2E Tests
+        if: ${{ steps.breaking.outputs.result != 'major' }}
+        env:
+          AGENT_URL: ${{ vars.SIT_AGENT_URL }}
+          MEDIATOR_URL: ${{ vars.SIT_MEDIATOR_URL }}
+        run: npm run integration
+
+      - name: Release library
+        run: npx semantic-release

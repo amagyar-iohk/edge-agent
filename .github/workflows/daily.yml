@@ -1,0 +1,26 @@
+name: Integration
+
+on:
+  schedule:
+    - cron: 0/5 * * * *
+
+jobs:
+  integration:
+    name: "Integration tests"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 21
+
+      - name: Run integration tests
+        env:
+          MEDIATOR_URL: ${{ vars.DEV_MEDIATOR_URL }}
+          AGENT_URL: ${{ vars.DEV_AGENT_URL }}
+        run: |
+          npm ci
+          npm run integration
