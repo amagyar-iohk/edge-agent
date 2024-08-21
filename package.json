@@ -34,5 +34,8 @@
     "ts-jest": "^29.2.4",
     "tsc": "^2.0.4",
     "typescript": "^5.5.4"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
