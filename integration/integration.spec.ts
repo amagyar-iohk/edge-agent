@@ -83,8 +83,8 @@ describe("Edge-agent end-to-end", () => {
         await promise
         assert.equal(SDK.messages.length, 3)
     }, 30 * 1000)
-})
 
-function sleep(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+    test("Added new test example in edge-agent", () => {
+        console.log("It should appear only in edge-agent tests while it's not released!")
+    })
+})
