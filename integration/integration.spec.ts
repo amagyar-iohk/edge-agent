@@ -13,6 +13,7 @@ describe("Edge-agent end-to-end", () => {
         const agent = new Promise<void>((resolve, reject) => {
             const t = setInterval(async () => {
                 const r = await fetch(`${agentUrl}/health`)
+                console.log(`Fetch to ${agentUrl}/health`, r.status)
                 if (r.status == 200) {
                     clearInterval(t)
                     resolve()
@@ -22,6 +23,7 @@ describe("Edge-agent end-to-end", () => {
         const mediator = new Promise<void>((resolve, reject) => {
             const t = setInterval(async () => {
                 const r = await fetch(`${mediatorUrl}/health`)
+                console.log(`Fetch to ${mediatorUrl}/health`, r.status)
                 if (r.status == 200) {
                     clearInterval(t)
                     resolve()
@@ -29,7 +31,7 @@ describe("Edge-agent end-to-end", () => {
             }, 3 * 1000)
         })
         await Promise.all([agent, mediator])
-    })
+    }, 30 * 1000)
 
     test("Setup mediator", async () => {
         await SDK.setupMediator(`${mediatorUrl}/connections`)
