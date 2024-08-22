@@ -75,7 +75,7 @@ describe("Edge-agent end-to-end", () => {
         setTimeout(async () => {
             await axios.post(`${issuerMessageToSdkUrl}/send`, { "content": "hello world" })
         }, 2000)
-        
+
         setTimeout(async () => {
             await axios.post(`${issuerMessageToSdkUrl}/send`, { "content": "hello world" })
         }, 3000)
@@ -86,5 +86,5 @@ describe("Edge-agent end-to-end", () => {
 })
 
 function sleep(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
