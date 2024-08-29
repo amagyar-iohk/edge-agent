@@ -87,4 +87,8 @@ describe("Edge-agent end-to-end", () => {
     test("Added new test example in edge-agent", () => {
         console.log("It should appear only in edge-agent tests while it's not released!")
     })
+
+    test("Added a new test", () => {
+        console.log("Executed")
+    })
 })
