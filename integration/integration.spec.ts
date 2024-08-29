@@ -91,4 +91,8 @@ describe("Edge-agent end-to-end", () => {
     test("Added a new test", () => {
         console.log("Executed")
     })
+
+    test("Added another new test", () => {
+        console.log("Executed")
+    })
 })
